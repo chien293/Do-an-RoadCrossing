@@ -40,7 +40,7 @@ public:
 	//    bool crash(cEnemy);
 	int getX();
 	int getY();
-	bool crash(cPosition pos, int w, int h);
+	bool ImPact(cPosition pos, int w, int h);
 	void sound();
 };
 

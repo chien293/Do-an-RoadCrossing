@@ -153,7 +153,7 @@ cPeople::~cPeople()
 }
 
 
-bool cPeople::crash(cPosition pos, int w, int h) {
+bool cPeople::ImPact(cPosition pos, int w, int h) {
 	int magicConst = 3;
 	if (w == 5) {
 		//crash while Car/Truck on the right
