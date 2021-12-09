@@ -1,7 +1,7 @@
 #ifndef cPeople_h
 #define cPeople_h
 
-#define RIGHTMAP 58
+#define RIGHTMAP 48
 #define LEFTMAP 2
 
 #include "cConsole.h"
@@ -34,13 +34,11 @@ public:
 	void killPlayer(); // set isDead
 	char** array2();
 	char** emptyShape();
-	//cPosition getPos();
 	int getWidth();
 	int getHeight();
-	//    bool crash(cEnemy);
 	int getX();
 	int getY();
-	bool ImPact(cPosition pos, int w, int h);
+	bool Impact(cPosition pos, int w, int h);
 	void sound();
 };
 

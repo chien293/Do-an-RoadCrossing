@@ -44,14 +44,14 @@ int cPeople::getWidth() {
 
 void cPeople::Up() {
 	sound();
-	if (pos.getX() <= 3) return;
-	pos.setPos(pos.getX() - 3, pos.getY());
+	if (pos.getX() <= 2) return;
+	pos.setPos(pos.getX() - 2, pos.getY());
 }
 
 void cPeople::Down() {
 	sound();
-	if (pos.getX() + 3 > 34) return;
-	pos.setPos(pos.getX() + 3, pos.getY());
+	if (pos.getX() + 2 > 20) return;
+	pos.setPos(pos.getX() + 2, pos.getY());
 }
 
 void cPeople::Left() {
@@ -73,7 +73,7 @@ bool cPeople::checkIsDead() {
 cPeople::cPeople() : isDead(false) {
 	int color = rand() % 7 + 9;
 	TextColor(color);
-	pos.setPos(34, 28);
+	pos.setPos(20, 28);
 	a = new char* [3];
 	emptyPlayer = new char* [3];
 	for (int i = 0; i < 3; ++i) {
@@ -153,13 +153,12 @@ cPeople::~cPeople()
 }
 
 
-bool cPeople::ImPact(cPosition pos, int w, int h) {
-	int magicConst = 3;
+bool cPeople::Impact(cPosition pos, int w, int h) {
+	
 	if (w == 5) {
 		//crash while Car/Truck on the right
-		magicConst = 3;
 		if (this->getX() == pos.getX()) {
-			if (this->getY() <= pos.getY() && max(getY(), pos.getY()) <= min(getY() + getWidth() - magicConst, pos.getY() + w - magicConst))
+			if (this->getY() <= pos.getY() && max(getY(), pos.getY()) <= min(getY() + getWidth(), pos.getY()))
 			{
 				return true;
 			}
@@ -168,10 +167,9 @@ bool cPeople::ImPact(cPosition pos, int w, int h) {
 		}
 	}
 	if (w == 3) {
-		magicConst = 1;
 		if (this->getX() == pos.getX())
 		{
-			if (this->getY() >= pos.getY() && pos.getY() + w - magicConst >= this->getY()) // crash while bird on the left
+			if (this->getY() >= pos.getY() && pos.getY() + w  >= this->getY()) // crash while bird on the left
 			{
 				return true;
 			}
@@ -180,7 +178,7 @@ bool cPeople::ImPact(cPosition pos, int w, int h) {
 		}
 	}
 	else
-		if (this->getX() == pos.getX() && max(getY(), pos.getY()) <= min(getY() + getWidth() - magicConst, pos.getY() + w - magicConst)) {
+		if (this->getX() == pos.getX() && max(getY(), pos.getY()) <= min(getY() + getWidth() , pos.getY())) {
 			return true;
 		}
 	return false;
