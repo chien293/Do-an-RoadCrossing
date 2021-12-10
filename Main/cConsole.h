@@ -1,14 +1,12 @@
-#pragma once
-#ifndef cConsole_
-#define cConsole_
 
+#ifndef _console_header
+#define _console_header
+#include <iostream>
+#include <Windows.h>
+#include <conio.h>
+#include <time.h>
 
-#include<iostream>
-using namespace std;
-#include<Windows.h>
-#include<time.h>
-#include<conio.h>
-#include <string.h>
+//static bool isMute = false;
 
 #define ColorCode_Back			0
 #define ColorCode_DarkBlue		1
@@ -30,26 +28,26 @@ using namespace std;
 #define default_ColorCode		7
 
 
-#define key_Up		72
-#define key_Down	80
-#define key_Left	75
-#define key_Right	77
+#define key_Up		1072
+#define key_Down	1080
+#define key_Left	1075
+#define key_Right	1077
+#define key_none	-1
 
-class Console
-{
-private:
-	int m_width;
-	int m_height;
-public:
 
-};
 
-void showCursor();
-void FixConsoleWindow();
-void gotoXY(int x, int y);
-void hideCursor();
+
+int inputKey();
 void clrscr();
+void gotoXY(int column, int line);
+int whereX();
+int whereY();
+void TextColor(int color);
+void ShowConsoleCursor(bool showFlag);
+void FixConsoleWindow();
+void DisableMouse();
 
-void textcolor(int x);
-int getSize();
-#endif // !Console_
+
+void drawTitle();
+#endif
+

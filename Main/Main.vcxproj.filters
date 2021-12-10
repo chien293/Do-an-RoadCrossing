@@ -24,12 +24,72 @@
     <ClCompile Include="cMap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="animal_vehical.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cBird.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cCar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cDinosaur.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cLevel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cOneRow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cPeople.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cPosition.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cRows.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cTruck.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cConsole.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cMap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="animal_vehical.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cBird.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cCar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cDinosaur.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cLevel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cOneRow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cPeople.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cPosition.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cRows.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cTruck.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

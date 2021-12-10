@@ -139,13 +139,33 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="animal_vehical.cpp" />
+    <ClCompile Include="cBird.cpp" />
+    <ClCompile Include="cCar.cpp" />
     <ClCompile Include="cConsole.cpp" />
+    <ClCompile Include="cDinosaur.cpp" />
+    <ClCompile Include="cLevel.cpp" />
     <ClCompile Include="cMap.cpp" />
+    <ClCompile Include="cOneRow.cpp" />
+    <ClCompile Include="cPeople.cpp" />
+    <ClCompile Include="cPosition.cpp" />
+    <ClCompile Include="cRows.cpp" />
+    <ClCompile Include="cTruck.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="animal_vehical.h" />
+    <ClInclude Include="cBird.h" />
+    <ClInclude Include="cCar.h" />
     <ClInclude Include="cConsole.h" />
+    <ClInclude Include="cDinosaur.h" />
+    <ClInclude Include="cLevel.h" />
     <ClInclude Include="cMap.h" />
+    <ClInclude Include="cOneRow.h" />
+    <ClInclude Include="cPeople.h" />
+    <ClInclude Include="cPosition.h" />
+    <ClInclude Include="cRows.h" />
+    <ClInclude Include="cTruck.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
