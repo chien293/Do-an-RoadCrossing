@@ -120,6 +120,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);winmm.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -144,6 +145,7 @@
     <ClCompile Include="cCar.cpp" />
     <ClCompile Include="cConsole.cpp" />
     <ClCompile Include="cDinosaur.cpp" />
+    <ClCompile Include="cGame.cpp" />
     <ClCompile Include="cLevel.cpp" />
     <ClCompile Include="cMap.cpp" />
     <ClCompile Include="cOneRow.cpp" />
@@ -159,6 +161,7 @@
     <ClInclude Include="cCar.h" />
     <ClInclude Include="cConsole.h" />
     <ClInclude Include="cDinosaur.h" />
+    <ClInclude Include="cGame.h" />
     <ClInclude Include="cLevel.h" />
     <ClInclude Include="cMap.h" />
     <ClInclude Include="cOneRow.h" />
@@ -166,6 +169,17 @@
     <ClInclude Include="cPosition.h" />
     <ClInclude Include="cRows.h" />
     <ClInclude Include="cTruck.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="boc4.wav" />
+    <Media Include="carstarthonkbackfire.wav" />
+    <Media Include="CompleteStage.wav" />
+    <Media Include="Mario.wav" />
+    <Media Include="PUBG.wav" />
+    <Media Include="RaceStart.wav" />
+    <Media Include="Ring.wav" />
+    <Media Include="Tiger6.wav" />
+    <Media Include="trafficjam.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

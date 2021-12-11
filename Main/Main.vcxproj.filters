@@ -54,6 +54,9 @@
     <ClCompile Include="cTruck.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="cGame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cConsole.h">
@@ -92,5 +95,37 @@
     <ClInclude Include="cTruck.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="cGame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="boc4.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="carstarthonkbackfire.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="CompleteStage.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Mario.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="PUBG.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="RaceStart.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Ring.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Tiger6.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="trafficjam.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
   </ItemGroup>
 </Project>

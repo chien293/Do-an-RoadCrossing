@@ -5,6 +5,7 @@
 #include <ctime>
 
 #include "cMap.h"
+#include "cGame.h"
 #include "cTruck.h"
 #include "cCar.h"
 #include "cBird.h"
@@ -25,7 +26,9 @@ int main() {
 	//MoveWindow(window_handle, x, y, width, height, redraw_window);
 	MoveWindow(console, r.left, r.top, 1200, 660, TRUE);
 	FixConsoleWindow();
+	cGame game;
 	//game.getAllFilename("data");
+	game.menu();
 	
 
 	//system("pause");
