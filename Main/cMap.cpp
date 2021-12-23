@@ -3,28 +3,6 @@
 
 cMap::cMap() : width(100), height(27)
 {
-	//for (int i = 0; i <= width; i++) 
-	//{
-	//	map[0][i] = map[height + 1][i] = '-';
-	//}
-	//map[0][width + 1] = map[height + 1][width + 1] = ' ';
-	//for (int i = 1; i <= height; ++i) 
-	//{
-	//	map[i][0] = map[i][width] = '|';
-	//	map[i][width + 1] = ' ';
-
-	//	for (int j = 1; j < width; ++j) {
-	//		map[i][j] = ' ';
-	//	}
-	//}
-	//for (int i = 1; i <= height; ++i)
-	//{
-	//	map[i][0] = map[i][width] = '|';
-	//	for (int j = 1; j <= width; j += 3)
-	//	{
-	//		map[i][j] = map[height + 1][i] = char(196);
-	//	}
-	//}
 	int f = 0, e = width - 1;
 	for (int i = 1; i < width; i++)
 	{
@@ -89,6 +67,7 @@ void cMap::printBorder()
 		}
 		cout << endl;
 	}
+	gotoXY(115, 1); cout << "Road Crossing Game";
 }
 void cMap::printMap()
 {
