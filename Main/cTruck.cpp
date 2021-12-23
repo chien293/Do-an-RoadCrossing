@@ -4,17 +4,17 @@ using namespace std;
 cTruck::cTruck(cPosition pos) : animal_vehical(pos) {
 	int color = 1;
 	TextColor(color);
-	a = new char*[3];
+	a = new char* [3];
 	for (int i = 0; i < 3; i++)
 	{
 		a[i] = new char[8];
 	}
-	
+
 	a[0][0] = (char)218, ColorCode_Blue;
 	for (int i = 1; i < 7; i++)
 		a[0][i] = char(240), ColorCode_Blue;
 	a[0][7] = (char)191, ColorCode_Blue;
-	
+
 	a[1][0] = (char)179, ColorCode_Blue;
 	for (int i = 1; i < 8; i++)
 	{
@@ -23,7 +23,7 @@ cTruck::cTruck(cPosition pos) : animal_vehical(pos) {
 		else
 			a[1][i] = ' ', ColorCode_Blue;
 	}
-	
+
 	a[2][0] = (char)192, ColorCode_Blue;
 	for (int i = 1; i < 7; i++) {
 		if (i == 1 || i == 6)a[2][i] = 'O', ColorCode_Blue;
@@ -35,7 +35,7 @@ cTruck::cTruck(cPosition pos) : animal_vehical(pos) {
 };
 
 
-char **cTruck::array2()
+char** cTruck::array2()
 {
 
 	return a;
@@ -50,12 +50,12 @@ cTruck::cTruck()
 {
 	int color = 1;
 	TextColor(color);
-	a = new char*[3];
+	a = new char* [3];
 	for (int i = 0; i < 3; i++)
 	{
 		a[i] = new char[8];
 	}
-	
+
 	a[0][0] = (char)218, ColorCode_Blue;
 	for (int i = 1; i < 7; i++)
 		a[0][i] = char(240), ColorCode_Blue;
@@ -91,7 +91,7 @@ void cTruck::draw()
 {
 	int color = 1;
 	TextColor(color);
-	
+
 	a[0][0] = (char)218, ColorCode_Blue;
 	for (int i = 1; i < 7; i++)
 		a[0][i] = char(240), ColorCode_Blue;

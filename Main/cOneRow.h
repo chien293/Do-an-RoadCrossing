@@ -1,7 +1,7 @@
 #ifndef cOneRow_h
 #define cOneRow_h
 
-#define RIGHTMAP 58
+#define RIGHTMAP 48
 #define LEFTMAP 2
 
 #include <vector>

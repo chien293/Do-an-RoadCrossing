@@ -10,11 +10,11 @@ void cOneRow::redrawState() {
 	}
 	if (direction)
 	{
-		gotoXY(RIGHTMAP + 60, currentRow);
+		gotoXY(RIGHTMAP + 40, currentRow);
 	}
 	else
 	{
-		gotoXY(LEFTMAP - 1, currentRow);
+		gotoXY(LEFTMAP -1, currentRow);
 	}
 	cout << (char)254;
 	TextColor(7);
@@ -67,7 +67,7 @@ int cOneRow::moveToNextState(int t) {
 	}
 	if (direction)
 	{
-		gotoXY(RIGHTMAP + 60, currentRow);
+		gotoXY(RIGHTMAP + 50, currentRow);
 	}
 	else
 	{
