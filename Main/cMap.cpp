@@ -132,53 +132,50 @@ void cMap::initializeNewState()
 	new(&people) cPeople();
 	rowsData.~cRows();
 	new(&rowsData) cRows();
-	int tmp[10];
-	for (int i = 1; i < 6; ++i)
-	{
-		tmp[i] = 0;
+	int padding[10];
+	for (int i = 1; i < 5; ++i) {
+		padding[i] = 0;
 		int speed = rand() % (level.getMinSpeed() - level.getMaxSpeed()) + level.getMaxSpeed();
-		bool direction = rand() % 2;
-		bool redLight = rand() % 2;
+		bool direction = rand() % 5;
+		bool redLight = rand() % 5;
 		rowsData.pushRow(new cOneRow(speed, direction, redLight, (i * 2)));
 	}
 	animal_vehical* newEnemy;
 	cPosition pos;
-	int tryCount = 100;
+	int tryCount = 10;
 	while (tryCount--) {
 		int rRow = (rand() % 9) + 1;
-		tmp[rRow] += (rand() % 20) + 9;
-		pos = cPosition((rRow * 2), tmp[rRow]);
+		padding[rRow] += (rand() % 20) + 9;
+		pos = cPosition((rRow * 2), padding[rRow]);
 		newEnemy = level.randNewEnemy(pos);
 		if (!newEnemy) break;
-		if (!rowsData.pushEnemy(rRow, newEnemy)) 
-		{
+		if (!rowsData.pushEnemy(rRow, newEnemy)) {
 			level.decNEnemy(1);
 			delete newEnemy;
 		};
 	}
 	Sleep(300);
-	rowsData.moveToNextState(0);
+	rowsData.moveToNextState(2);
 }
 
 void cMap::randomNextState() 
 {
 	srand(time(NULL));
+	//int t = rand(); // this will be get from global clock
 	animal_vehical* newEnemy;
 	cPosition pos;
 	int tryCount = 10000;
-	while (tryCount--) 
-	{
+	while (tryCount--) {
 		int rRow = (rand() % 4) + 1;
 		pos = cPosition((rRow * 5) + 1, 4);
 		newEnemy = level.randNewEnemy(pos);
 		if (!newEnemy) break;
-		if (!rowsData.pushEnemy(rRow, newEnemy)) 
-		{
+		if (!rowsData.pushEnemy(rRow, newEnemy)) {
 			level.decNEnemy(4);
 			delete newEnemy;
 		};
 	}
-	t++;
+	++t;
 	int tmp = rowsData.moveToNextState(t);
 	level.decNEnemy(tmp);
 	hitMap();
