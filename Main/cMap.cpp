@@ -3,8 +3,30 @@
 
 cMap::cMap() : width(100), height(27)
 {
+	//for (int i = 0; i <= width; i++) 
+	//{
+	//	map[0][i] = map[height + 1][i] = '-';
+	//}
+	//map[0][width + 1] = map[height + 1][width + 1] = ' ';
+	//for (int i = 1; i <= height; ++i) 
+	//{
+	//	map[i][0] = map[i][width] = '|';
+	//	map[i][width + 1] = ' ';
+
+	//	for (int j = 1; j < width; ++j) {
+	//		map[i][j] = ' ';
+	//	}
+	//}
+	//for (int i = 1; i <= height; ++i)
+	//{
+	//	map[i][0] = map[i][width] = '|';
+	//	for (int j = 1; j <= width; j += 3)
+	//	{
+	//		map[i][j] = map[height + 1][i] = char(196);
+	//	}
+	//}
 	int f = 0, e = width - 1;
-	for (int i = 1; i < width; i++) // len duong va khoang trong giua
+	for (int i = 1; i < width; i++)
 	{
 		map[0][i] = map[4][i] = map[8][i] = map[12][i] = map[16][i] = map[24][i] = char(196);
 		if (i < width - 1)
@@ -18,7 +40,7 @@ cMap::cMap() : width(100), height(27)
 	}
 	map[0][0] = char(218);
 	map[0][width - 1] = char(191);
-	for (int i = 1; i < 27; i++) // khung ngoai
+	for (int i = 1; i < 27; i++)
 	{
 		map[i][f] = char(179);
 		map[i][e] = char(179);
@@ -29,21 +51,44 @@ cMap::cMap() : width(100), height(27)
 	map[16][e] = char(180); map[20][e] = char(180); map[24][e] = char(217);
 }
 
+void cMap::resetMap() {
+	cout << "This is resetMap" << endl;
+	int f = 0, e = width - 1;
+	for (int i = 1; i < width; i++)
+	{
+		map[0][i] = map[4][i] = map[8][i] = map[12][i] = map[16][i] = map[24][i] = char(196);
+		if (i < width - 1)
+		{
+			map[1][i] = ' '; map[2][i] = ' '; map[3][i] = ' '; map[5][i] = ' '; map[6][i] = ' ';
+			map[7][i] = ' '; map[9][i] = ' '; map[10][i] = ' '; map[11][i] = ' ';
+			map[13][i] = ' '; map[14][i] = ' '; map[15][i] = ' '; map[17][i] = ' '; map[18][i] = ' ';
+			map[19][i] = ' '; map[20][i] = ' '; map[21][i] = ' '; map[22][i] = ' '; map[23][i] = ' ';
+		}
+
+	}
+	map[0][0] = char(218);
+	map[0][width - 1] = char(191);
+	for (int i = 1; i < 26; i++)
+	{
+		map[i][f] = char(179);
+		map[i][e] = char(179);
+	}
+	map[4][0] = char(195); map[8][0] = char(195); map[12][0] = char(195);
+	map[16][0] = char(195); map[20][0] = char(179); map[24][0] = char(192);
+	map[4][e] = char(180); map[8][e] = char(180); map[12][e] = char(180);
+	map[16][e] = char(180); map[20][e] = char(180); map[24][e] = char(217);
+}
 void cMap::printBorder()
 {
 	clrscr();
 	gotoXY(0, 0);
-	for (int i = 0; i < height - 2; i++) 
-	{
-		for (int j = 0; j < width; j++)
-		{
+	for (int i = 0; i < height - 2; i++) {
+		//cout << "  ";
+		for (int j = 0; j < width; j++) {
 			cout << map[i][j];
 		}
 		cout << endl;
 	}
-	drawTitle();
-	gotoXY(125, 1); cout << "Road Crossing Game";
-	drawPlayer();
 }
 void cMap::printMap()
 {
@@ -98,15 +143,15 @@ void cMap::printMap()
 	drawPlayer();
 }
 
-void cMap::hitMap() 
-{
-	vector <animal_vehical*> enemyList = rowsData.listEnemy(); 
-	for (int i = 0; i < (int)enemyList.size(); i++)
-	{
-		if (people.Impact(enemyList[i]->getPos(), enemyList[i]->getWidth() - 3, enemyList[i]->getHeight()))
-		{
+void cMap::drawMap() {
+	//resetMap();
+	vector <animal_vehical*> enemyList = rowsData.listEnemy(); //enemyList = 0 
+	for (int i = 0; i < (int)enemyList.size(); ++i) {
+		//drawEnemies(enemyList[i]);
+		if (people.Impact(enemyList[i]->getPos(), enemyList[i]->getWidth() - 3, enemyList[i]->getHeight())) {
 			if (!constantVar::isMute) enemyList[i]->sound();
 			people.killPlayer();
+			//randomNextState();
 			deleteOldPlayer();
 			drawPlayer();
 			Sleep(300);
@@ -117,18 +162,16 @@ void cMap::hitMap()
 			return;
 		}
 	}
+	//drawPlayer();
 }
 
-int cMap::draw(cPosition pos, char ** shape, int w, int h)
-{
+int cMap::draw(cPosition pos, char ** shape, int w, int h) {
 	int X = pos.getX();
 	int Y = pos.getY();
 	if (Y + w <= 0) return 0;
 	if (Y > width) return 0;
-	for (int i = 0; i < h; i++)
-	{
-		for (int j = max(1, Y); j <= min(width, Y + w - 1); j++) 
-		{
+	for (int i = 0; i < h; ++i) {
+		for (int j = max(1, Y); j <= min(width, Y + w - 1); ++j) {
 			gotoXY(Y + j, X + i);
 			cout << shape[i][j - max(1, Y)];
 		}
@@ -136,36 +179,29 @@ int cMap::draw(cPosition pos, char ** shape, int w, int h)
 	return 1;
 }
 
-void cMap::drawEnemies(animal_vehical* enemy) 
-{ 
+void cMap::drawEnemies(animal_vehical* enemy) { // deleted
 	int status = draw(enemy->getPos(), enemy->array2(), enemy->getWidth(), enemy->getHeight());
-	if (status == 0) 
-	{
+	if (status == 0) {
 		enemy->goOutMap();
 	}
-	if (status == -1) 
-	{
+	if (status == -1) {
 		people.killPlayer();
 	}
 }
 
-void cMap::drawPlayer()
-{
+void cMap::drawPlayer() {
 	int status = draw(people.getPos(), people.array2(), people.getWidth(), people.getHeight());
-	if (status == -1)
-	{
+	if (status == -1) {
 		people.killPlayer();
 	}
 }
 
-void cMap::deleteOldPlayer()
-{
+void cMap::deleteOldPlayer() {
 	draw(people.getPos(), people.emptyShape(), people.getWidth(), people.getHeight());
 }
 
 
-void cMap::initializeNewState() 
-{
+void cMap::initializeNewState() {
 	people.~cPeople();
 	new(&people) cPeople();
 	rowsData.~cRows();
@@ -196,8 +232,7 @@ void cMap::initializeNewState()
 	rowsData.moveToNextState(2);
 }
 
-void cMap::randomNextState() 
-{
+void cMap::randomNextState() {
 	srand(time(NULL));
 	//int t = rand(); // this will be get from global clock
 	animal_vehical* newEnemy;
@@ -216,19 +251,17 @@ void cMap::randomNextState()
 	++t;
 	int tmp = rowsData.moveToNextState(t);
 	level.decNEnemy(tmp);
-	hitMap();
+	drawMap();
 }
 
-void cMap::redrawMap() 
-{
+void cMap::redrawMap() {
 	printMap();
 	int tmp = rowsData.moveToNextState(t);
 	level.decNEnemy(tmp);
-	hitMap();
+	drawMap();
 }
 
-void cMap::updatePosPlayer(char moving)
-{
+void cMap::updatePosPlayer(char moving) {
 	deleteOldPlayer();
 	if (moving == 'a' || moving == 'A') people.Left();
 	else if (moving == 'w' || moving == 'W') people.Up();
@@ -243,8 +276,7 @@ bool cMap::isEnd()
 }
 bool cMap::isWin()
 {
-	if (people.getX() == 2) 
-	{
+	if (people.getX() == 2) {
 		if (!constantVar::isMute)PlaySound(TEXT("CompleteStage.wav"), NULL, SND_ASYNC);
 		return true;
 	}
@@ -253,34 +285,46 @@ bool cMap::isWin()
 
 void cMap::bombEffect()
 {
-	int baseX = 10, baseY = 10;
-	gotoXY(baseX, baseY);     cout << "***      ******       *       ***        " << endl;
-	gotoXY(baseX, baseY + 1); cout << "*   *    *           * *      *   *      " << endl;
-	gotoXY(baseX, baseY + 2); cout << "*     *  *          *   *     *     *    " << endl;
-	gotoXY(baseX, baseY + 3); cout << "*      * ******    *  *  *    *       *  " << endl;
-	gotoXY(baseX, baseY + 4); cout << "*     *  *        *       *   *     *    " << endl;
-	gotoXY(baseX, baseY + 5); cout << "*   *    *       *         *  *   *      " << endl;
-	gotoXY(baseX, baseY + 4); cout << "***      ****** *           * ***        " << endl;
+	const int baseX = 10, baseY = 10;
+	gotoXY(baseX, baseY);
+	cout << R"(                                               ____                       )" << "\n";
+	gotoXY(baseX, baseY + 1);
+	cout << R"(                                           __,-~~/~    `---.                  )" << "\n";
+	gotoXY(baseX, baseY + 2);
+	cout << R"(                                         _/_,---(      ,    )                 )" << "\n";
+	gotoXY(baseX, baseY + 3);
+	cout << R"(                                     __ /        <    /   )  \___             )" << "\n";
+	gotoXY(baseX, baseY + 4);
+	cout << R"(                      - ------===;;;'====------------------===;;;===----- -  -)" << "\n";
+	gotoXY(baseX, baseY + 5);
+	cout << R"(                                      \/  ~"~"~"~"~"~\~"~)~" / )" << "\n";
+	gotoXY(baseX, baseY + 6);
+	cout << R"(                                        (_ (   \  (     >    \)               )" << "\n";
+	gotoXY(baseX, baseY + 7);
+	cout << R"(                                         \_( _ <         >_>'                 )" << "\n";
+	gotoXY(baseX, baseY + 8);
+	cout << R"(                                            ~ `-i' ::>|--"                    )" << "\n";
+	gotoXY(baseX, baseY + 9);
+	cout << R"(                                                I;|.|.|                       )" << "\n";
+	gotoXY(baseX, baseY + 10);
+	cout << R"(                                               <|i::|i|`.                     )" << "\n";
+	gotoXY(baseX, baseY + 11);
+	cout << R"(                                              (` ^'"`-' ")                    )";
 }
 
-void cMap::nextLevel()
-{
+void cMap::nextLevel() {
 	level.nextLevel();
 }
 
-int cMap::readInt(ifstream& infile)
-{
+void cMap::printInt(int x, ofstream& outfile) {
+	outfile.write((char*)&x, sizeof(int));
+}
+
+int cMap::readInt(ifstream& infile) {
 	int x;
 	infile.read((char*)&x, sizeof(int));
 	return x;
 }
-
-void cMap::printInt(int x, ofstream& outfile)
-{
-	outfile.write((char*)&x, sizeof(int));
-}
-
-
 
 void cMap::saveGame(string file)
 {
@@ -290,8 +334,7 @@ void cMap::saveGame(string file)
 	printInt(people.getY(), outfile);
 
 	vector <cOneRow*> rows(rowsData.listRow());
-	for (int i = 0; i < 5; ++i) 
-	{
+	for (int i = 0; i < 5; ++i) {
 		printInt(rows[i]->getCurrentRow(), outfile);
 		printInt((int)rows[i]->getDirection(), outfile);
 		printInt(rows[i]->getSpeed(), outfile);
@@ -300,8 +343,7 @@ void cMap::saveGame(string file)
 		vector <animal_vehical*> enemy(rows[i]->getEnemy());
 		printInt((int)enemy.size(), outfile);
 
-		for (int j = 0; j < (int)enemy.size(); ++j)
-		{
+		for (int j = 0; j < (int)enemy.size(); ++j) {
 			printInt(enemy[j]->getX(), outfile);
 			printInt(enemy[j]->getY(), outfile);
 			printInt(enemy[j]->getType(), outfile);
@@ -310,11 +352,9 @@ void cMap::saveGame(string file)
 	outfile.close();
 }
 
-bool cMap::loadGame(string file) 
-{
+bool cMap::loadGame(string file) {
 	ifstream infile("./data/" + file, ios::in | ios::binary);
-	if (!infile.is_open()) 
-	{
+	if (!infile.is_open()) {
 		return false;
 	}
 	int lv = readInt(infile);
@@ -325,19 +365,24 @@ bool cMap::loadGame(string file)
 	playerY = readInt(infile);
 	people.~cPeople();
 	new(&people) cPeople(cPosition(playerX, playerY));
+
 	int nEnemy = 0;
+
 	rowsData.~cRows();
 	new(&rowsData) cRows();
-	for (int i = 0; i < 5; ++i)
-	{
+
+	for (int i = 0; i < 5; ++i) {
 		int currentRow, direction, speed, redLight;
 		currentRow = readInt(infile);
 		direction = readInt(infile);
 		speed = readInt(infile);
 		redLight = readInt(infile);
+
 		rowsData.pushRow(new cOneRow(speed, direction, redLight, currentRow));
+		
 		int enemySize = readInt(infile);
-		nEnemy += enemySize;	
+		nEnemy += enemySize;
+		
 		for (int j = 0; j < enemySize; ++j) {
 			int eX, eY, eType;
 			eX = readInt(infile);
@@ -353,7 +398,8 @@ bool cMap::loadGame(string file)
 void cMap::printCongrats()
 {
 	clrscr();
-	printMap();	deleteOldPlayer();
+	printMap();	
+	deleteOldPlayer();
 	if (!constantVar::isMute)PlaySound(TEXT("CompleteStage.wav"), NULL, SND_ASYNC);
 	gotoXY(120, 2); cout << "*         *         * * *      *  " << endl;
 	gotoXY(120, 3); cout << " *       * *       *  * * *    *  " << endl;
@@ -362,7 +408,10 @@ void cMap::printCongrats()
 	gotoXY(120, 6); cout << "    * *       * *     * *    * *  " << endl;
 	gotoXY(120, 7); cout << "     *         *      * *     **  " << endl;
 	gotoXY(130, 8); cout << "Exit ?" << endl;
-	const char *choice[2] = { "<YES>", "<OF COURSE>" }; int pos = 0, x = 130, y = 10;  TextColor(7);
+	const char *choice[2] = { "<YES>", "<OF COURSE>" };
+	int pos = 0, x = 130, y = 10;
+	TextColor(7);
+
 	while (1) {
 		TextColor(7);
 		for (int i = 0; i < 2; i++) {
@@ -377,12 +426,16 @@ void cMap::printCongrats()
 				cout << choice[i];
 			}
 		}
+
 		switch (inputKey()) {
 		case 'w':
-			pos--; pos = abs(pos); pos %= 2;
+			pos--;
+			pos = abs(pos);
+			pos %= 2;
 			break;
 		case 's':
-			pos++; pos %= 2;
+			pos++;
+			pos %= 2;
 			break;
 		case 13:
 			return ;
@@ -390,29 +443,37 @@ void cMap::printCongrats()
 	}
 }
 
-bool cMap::printLevelUp()
-{
+bool cMap::printLevelUp() {
 	if (level.getLevel() == 5)
 	{
 		printCongrats();
 		return false;
-	}else {
+	}
+	else {
 		clrscr();
-		printMap(); deleteOldPlayer();
+		printMap();
+		deleteOldPlayer();
 		gotoXY(120, 15); cout << "Continue ?" << endl;
-		const char *choice[2] = { "<YES>", "<NO>" }; int pos = 0, x = 120, y = 17;  TextColor(7);
+		const char *choice[2] = { "<YES>", "<NO>" };
+		int pos = 0, x = 120, y = 17;
+		TextColor(7);
+
 		while (1) {
 			TextColor(7);
-			for (int i = 0; i < 2; i++) {
+			for (int i = 0; i < 2; i++) 
+			{
 				if (i == pos) {
-					TextColor(227); gotoXY(x, y + i);
-					cout << choice[i]; TextColor(7);
+					TextColor(227);
+					gotoXY(x, y + i);
+					cout << choice[i];
+					TextColor(7);
 				}
 				else {
 					gotoXY(x, y + i);
 					cout << choice[i];
 				}
 			}
+
 			switch (inputKey()) {
 			case 'w':
 				pos--;
