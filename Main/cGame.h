@@ -1,9 +1,12 @@
 #ifndef cGame_h
 #define cGame_h
 
+
 #include <iostream>
 #include <fstream>
 #include <thread>
+//#include <dirent.h>
+
 #include "cConsole.h"
 #include "cPeople.h"
 #include "animal_vehical.h"
@@ -13,7 +16,7 @@
 using namespace std;
 
 class cGame
-{
+{	
 	bool isLoaded = false;
 	cMap map;
 	bool isPausing = false;
@@ -21,6 +24,7 @@ public:
 	cGame() = default;
 	~cGame() = default;
 	void gameSettings();
+	void menu(bool &isFinish);
 	bool newGame(); // start a new game, initialize cMap map
 	bool continueGame();  //continue our game
 	bool loadGameMenu(); // get file of cMap map
@@ -28,6 +32,7 @@ public:
 	void togglePauseGame(); // toggle status of isPausing
 	void toggleMute();
 	void toggleHard();
+	void gameOver();
 	void loading();
 	vector<string> getAllFilename(const std::string& name);
 	void menu();

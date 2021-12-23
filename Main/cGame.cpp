@@ -1,10 +1,10 @@
 #include "cGame.h"
 
-void cGame::gameSettings()
+void cGame::gameSettings() 
 {
 	system("cls");
-	const char* setting[3] = { "Mode", "Sound", "Menu" };
-	const char* currentSettting[3] = { "HARD", "ON", "" };
+	const char *setting[3] = { "Mode", "Sound", "Menu" };
+	char * currentSettting[3] = { "HARD", "ON", "" };
 	if (constantVar::isHard) {
 		currentSettting[0] = "HARD";
 	}
@@ -43,11 +43,11 @@ void cGame::gameSettings()
 			currentKey = false;
 		}
 		while (1) {
-			if (_kbhit()) {
+			if (kbhit()) {
 				currentKey = true;
 				//system("cls");
-
-				char key = _getch();
+				
+				char key = getch();
 				if (key == 'W' || key == 'w') {
 					pos1--;
 					pos1 = (pos1 + 3) % 3;
@@ -106,9 +106,18 @@ void cGame::gameSettings()
 
 			}
 		}
-
+		
 	}
+	//if (flag == 1) { //???
+	//	//system("cls");
+	//	bool isFinish = false;
+	//	menu();
+	//	//  cGame::drawGame();
+	//}
 	return;
+}
+
+void cGame::menu(bool &isFinish) {
 }
 
 void cGame::menu() {
@@ -174,7 +183,7 @@ void cGame::menu() {
 							Sleep(1000);
 							clrscr();
 							map.printBorder();
-
+				
 							changeInput = true;
 							break;//lose-quit
 						}
@@ -197,13 +206,13 @@ void cGame::menu() {
 								Sleep(1000);
 								TextColor(7);
 								clrscr();
-								map.printBorder();
+								map.printBorder();								
 								changeInput = true;
 								break;//lose-quit
 							}
 						}
 					}
-					else
+					else 
 					{
 						changeInput = true;
 						map.printBorder();
@@ -259,7 +268,7 @@ bool cGame::continueMenu() {
 	gotoXY(125, 13); cout << "                                             " << endl;
 	gotoXY(125, 14); cout << "                                             " << endl;
 	gotoXY(125, 15); cout << "                                             " << endl;
-	const char* choice[2] = { "<YES>", "<NO>" };
+	const char *choice[2] = { "<YES>", "<NO>" };
 	int pos = 0, x = 120, y = 10;
 	TextColor(7);
 
@@ -297,7 +306,7 @@ bool cGame::continueMenu() {
 
 
 bool cGame::newGame() { // start a new game, initialize cMap map
-	system("cls");
+	
 	char key;
 	if (!isLoaded) {
 		map.~cMap();
@@ -305,7 +314,7 @@ bool cGame::newGame() { // start a new game, initialize cMap map
 	}
 	isPausing = false;
 	map.printMap();
-	if (!isLoaded) map.initializeNewState();
+	if(!isLoaded) map.initializeNewState();
 	isLoaded = false;
 
 	const string choice[3] = { "Save Game","Load Game","Quit" };
@@ -332,10 +341,10 @@ bool cGame::newGame() { // start a new game, initialize cMap map
 				cout << choice[i] << endl;
 			}
 		}
-
-		if (_kbhit())
+			
+		if (kbhit())
 		{
-			key = _getch();
+			key = getch();
 			if (key == 'l')
 			{
 				//Save
@@ -370,7 +379,7 @@ bool cGame::newGame() { // start a new game, initialize cMap map
 			}
 			if (key == 'w')
 			{
-				if (!isPausing) map.updatePosPlayer('w');
+				if(!isPausing) map.updatePosPlayer('w');
 				else {
 					pos--;
 					pos = (pos + 3) % 3;
@@ -409,7 +418,7 @@ bool cGame::newGame() { // start a new game, initialize cMap map
 			}
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 			map.drawPlayer();
-			map.hitMap();
+			map.drawMap();
 		}
 		if (map.isWin()) {
 			if (!constantVar::isMute)PlaySound(TEXT("CompleteStage.wav"), NULL, SND_ASYNC);
@@ -456,9 +465,9 @@ bool cGame::continueGame()
 			cout << choice[i] << endl;
 		}
 
-		if (_kbhit())
+		if (kbhit())
 		{
-			key = _getch();
+			key = getch();
 			if (key == 'l')
 			{
 				//Save
@@ -518,7 +527,7 @@ bool cGame::continueGame()
 			}
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 			map.drawPlayer();
-			map.hitMap();
+			map.drawMap();
 		}
 		if (map.isWin()) {
 			if (map.printLevelUp()) {
@@ -553,33 +562,33 @@ void cGame::loading()
 		gotoXY(49, 27);
 		cout << i << " %";
 		Sleep(10);
-		gotoXY(i, 28);
+		gotoXY( i, 28);
 		cout << char(219);
 	}
 }
 
 vector<string> cGame::getAllFilename(const string& name)
 {
-	vector<string> v;
-	string pattern(name);
-	pattern.append("\\*");
-	std::wstring stemp = std::wstring(pattern.begin(), pattern.end());
-	LPCWSTR sw = stemp.c_str();
-	WIN32_FIND_DATA data;
-	HANDLE hFind;
-	if ((hFind = FindFirstFile(sw, &data)) != INVALID_HANDLE_VALUE) {
-		do {
-			wchar_t* txt = data.cFileName;
-			wstring ws(txt);
-			// your new String
-			string str(ws.begin(), ws.end());
-			if (str[0] == '.') continue;
-			// Show String
-			v.push_back(str);
-		} while (FindNextFile(hFind, &data) != 0);
-		FindClose(hFind);
-	}
-	return v;
+		vector<string> v;
+		string pattern(name);
+		pattern.append("\\*");
+		std::wstring stemp = std::wstring(pattern.begin(), pattern.end());
+		LPCWSTR sw = stemp.c_str();
+		WIN32_FIND_DATA data;					
+		HANDLE hFind;
+		if ((hFind = FindFirstFile(sw, &data)) != INVALID_HANDLE_VALUE) {
+			do {
+				wchar_t* txt = data.cFileName;
+				wstring ws(txt);
+				// your new String
+				string str(ws.begin(), ws.end());
+				if (str[0] == '.') continue;
+				// Show String
+				v.push_back(str);
+			} while (FindNextFile(hFind, &data) != 0);
+			FindClose(hFind);
+		}
+		return v;
 }
 
 bool cGame::loadGameMenu() { // get file of cMap map
@@ -607,7 +616,7 @@ bool cGame::loadGameMenu() { // get file of cMap map
 	gotoXY(30, 13); cout << "<Press ESC to escape...>";
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 	gotoXY(30, 15);
-
+	
 
 	for (int i = 0; i < (int)files.size(); ++i) {
 		if (i == curPos) {
@@ -618,9 +627,9 @@ bool cGame::loadGameMenu() { // get file of cMap map
 		cout << files[i] << endl;
 	}
 	while (true) {
-		if (_kbhit())
+		if (kbhit())
 		{
-			char key = _getch();
+			char key=getch();
 			if (key == 'w')
 			{
 				gotoXY(26, 16 + curPos);
@@ -667,7 +676,7 @@ void cGame::saveGameMenu() { // get file of cMap ma
 	gotoXY(15, 6); cout << " **          *  *  **    **  **         ** * * ** **       ** *  ** **    ** " << endl;
 	gotoXY(15, 7); cout << "   **      *  ** *  **   **  *******    **  *  ** *******  **  * ** **    **  " << endl;
 	gotoXY(15, 8); cout << "     **   *       *  ** **   **         **     ** **       **   *** **    **   " << endl;
-	gotoXY(15, 9); cout << "******   *         *  **     *******    **     ** ******** **    ** ********  " << endl;
+	gotoXY(15, 9); cout << "******   *         *  **     *******    **     ** ******** **    ** ********  " << endl;                                  
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 	gotoXY(15, 20);
 	cout << "<Press ESC to escape>";
@@ -678,7 +687,7 @@ void cGame::saveGameMenu() { // get file of cMap ma
 	//getline(cin, filename);
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 	char key;
-	while ((key = _getch()) != 27) {
+	while ((key = getch()) != 27 ) {
 		switch (key) {
 		case '\b':
 			if (filename.size() != 0) {
@@ -710,8 +719,13 @@ void cGame::togglePauseGame() { // toggle status of isPausing
 	isPausing = !isPausing;
 };
 
-void cGame::toggleMute()
+void cGame::gameOver() 
 {
+	cout << "Game over" << endl;
+};
+
+void cGame::toggleMute()
+ {
 	constantVar::isMute = !constantVar::isMute;
 }
 
