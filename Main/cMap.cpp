@@ -47,16 +47,54 @@ void cMap::printBorder()
 }
 void cMap::printMap()
 {
+	int color = rand() % 7 + 9;
+	TextColor(color);
 	clrscr();
 	gotoXY(0, 0);
-	for (int i = 0; i < height - 2; ++i){
+	for (int i = 0; i < height - 2; ++i)
+	{
 		for (int j = 0; j < width; ++j)
 		{
 			cout << map[i][j];
 		}
 		cout << endl;
 	}
-	gotoXY(125, 1); cout << "Road Crossing Game";
+	gotoXY(125, 1); cout << "<Crossing Road Game>";
+	gotoXY(125, 3); cout << "LV. " << level.getLevel() << endl;
+	gotoXY(125, 5); cout << "CONTROL MANUAL" << endl;
+	gotoXY(125, 6); cout << "[ W ]: UP" << endl;
+	gotoXY(125, 7); cout << "[ S ]: DOWN" << endl;
+	gotoXY(125, 8); cout << "[ A ]: LEFT" << endl;
+	gotoXY(125, 9); cout << "[ D ]: RIGHT" << endl;
+	gotoXY(125, 11); cout << "COMMANDS" << endl;
+	gotoXY(125, 12); cout << "[ L ]: Save game" << endl;
+	gotoXY(125, 13); cout << "[ T ]: Load game" << endl;
+	gotoXY(125, 14); cout << "[ P ]: Pause game/Menu" << endl;
+	int x = 7;
+	int i = 28;
+	gotoXY(x, i++);
+	TextColor(12);
+	cout << "     ______                                         |oo|                            ______     /  |                                     /  |    ";
+	gotoXY(x, i++);
+	cout << "   $$$$$$  |  ______    ______     ______   ______  |oo|   _______    ______       /$$$$$$    _$$ |_     ______    ______    ______    _$$ |_   ";
+	gotoXY(x, i++);
+	cout << "  $$ |  $$/  /         /          /       |/        __    /          /             $$  __$$  / $$   |   /         /         /         / $$   |  ";
+	gotoXY(x, i++);
+	cout << "  $$ |      /$$$$$$  |/$$$$$$  |/$$$$$$$//$$$$$$$/  $$ | $$$$$$$  |/$$$$$$  |      $$        $$$$$$/   /$$$$$$ | /$$$$$$   /$$$$$$  | $$$$$$/   ";
+	gotoXY(x, i++);
+	cout << "  $$ |   __ $$ |  $$/ $$ |  $$ |$$       $$         $$ | $$ |  $$ |$$ |  $$ |       $$$$$$     $$ | __ $$ |  $$/ $$    $$  $$    $$ |   $$ | __ ";
+	gotoXY(x, i++);
+	cout << "  $$ |__/  |$$ |      $$ |__$$ | $$$$$$  |$$$$$$  | $$ | $$ |  $$ |$$ |__$$ |          __$$|   $$ |/  |$$ |      $$$$$$$$/ $$$$$$$$/    $$ |/  |";
+	gotoXY(x, i++);
+	cout << "  $$    $$/ $$ |      $$    $$/  _____$$/ _____$$/  $$ | $$ |  $$ |$$    $$ |      $$| _ $$/   $$  $$/ $$ |      $$        $$       |   $$  $$/ ";
+	gotoXY(x, i++);
+	cout << "   $$$$$$/  $$/        $$$$$$/  $$$$$$$/ $$$$$$$/   $$/  $$/   $$/  $$$$$$$ |       $$$$$$/    $$$$/   $$/        $$$$$$$/  $$$$$$$/     $$$$/  ";
+	gotoXY(x, i++);
+	cout << "                                                                         $$ |                                                                 ";
+	gotoXY(x, i++);
+	cout << "                                                                  $$     $$/                                                                  ";
+	gotoXY(x, i++);
+	cout << "                                                                    $$$$$$/                                                                   ";
 	drawPlayer();
 }
 
