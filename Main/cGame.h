@@ -1,5 +1,6 @@
 #ifndef cGame_h
 #define cGame_h
+
 #include <iostream>
 #include <fstream>
 #include <thread>
@@ -12,7 +13,7 @@
 using namespace std;
 
 class cGame
-{	
+{
 	bool isLoaded = false;
 	cMap map;
 	bool isPausing = false;
@@ -27,7 +28,6 @@ public:
 	void togglePauseGame(); // toggle status of isPausing
 	void toggleMute();
 	void toggleHard();
-	void gameOver();
 	void loading();
 	vector<string> getAllFilename(const std::string& name);
 	void menu();

@@ -18,7 +18,6 @@ using namespace std;
 
 int main() {
 	srand(time(NULL));
-	//DisableMouse();
 	HWND console = GetConsoleWindow();
 	RECT r;
 	GetWindowRect(console, &r); //stores the console's current dimensions
@@ -27,9 +26,6 @@ int main() {
 	MoveWindow(console, r.left, r.top, 1200, 660, TRUE);
 	FixConsoleWindow();
 	cGame game;
-	//game.getAllFilename("data");
 	game.menu();
 	
-
-	//system("pause");
 }
