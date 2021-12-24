@@ -246,11 +246,11 @@ bool cGame::continueMenu() {
 	//map.bombEffect();
 	gotoXY(125, 1); cout << "                                             " << endl;
 	gotoXY(125, 2); cout << "                                             " << endl;
-	gotoXY(105, 3); cout << "*******     *     * *       *******  ******  " << endl;
-	gotoXY(105, 4); cout << "*          * *    * *       *        *     * " << endl;
-	gotoXY(105, 5); cout << "*******   * * *   * *       *******  *     * " << endl;
-	gotoXY(105, 6); cout << "*        *     *  * *       *        *     * " << endl;
-	gotoXY(105, 7); cout << "*       *       * * ******* *******  ******  " << endl;
+	gotoXY(100, 3); cout << "*******     *     * *       *******  ******  " << endl;
+	gotoXY(100, 4); cout << "*          * *    * *       *        *     * " << endl;
+	gotoXY(100, 5); cout << "*******   * * *   * *       *******  *     * " << endl;
+	gotoXY(100, 6); cout << "*        *     *  * *       *        *     * " << endl;
+	gotoXY(100, 7); cout << "*       *       * * ******* *******  ******  " << endl;
 	gotoXY(125, 8); cout << "                                             " << endl;
 	gotoXY(125, 9); cout << "                                             " << endl;
 	gotoXY(120, 9); cout << "Continue ?" << endl;

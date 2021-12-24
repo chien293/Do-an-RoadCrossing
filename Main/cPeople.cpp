@@ -57,13 +57,13 @@ void cPeople::Down() {
 void cPeople::Left() {
 	sound();
 	if (pos.getY() <= LEFTMAP) return;
-	pos.setPos(pos.getX(), pos.getY() - 1);
+	pos.setPos(pos.getX(), pos.getY() - 2);
 }
 
 void cPeople::Right() {
 	sound();
 	if (pos.getY() + 2 >= RIGHTMAP) return;
-	pos.setPos(pos.getX(), pos.getY() + 1);
+	pos.setPos(pos.getX(), pos.getY() + 2);
 }
 
 bool cPeople::checkIsDead() {
