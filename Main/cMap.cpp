@@ -94,7 +94,7 @@ void cMap::printMap()
 	gotoXY(120, 12); cout << "[ L ]: Save game" << endl;
 	gotoXY(120, 13); cout << "[ T ]: Load game" << endl;
 	gotoXY(120, 14); cout << "[ P ]: Pause game/Menu" << endl;
-	int x = 2;
+	int x = 1;
 	int i = 28;
 	gotoXY(x, i++);
 	TextColor(12);
