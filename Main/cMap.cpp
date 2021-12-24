@@ -95,7 +95,7 @@ void cMap::printMap()
 	gotoXY(125, 13); cout << "[ T ]: Load game" << endl;
 	gotoXY(125, 14); cout << "[ P ]: Pause game/Menu" << endl;
 	int x = 7;
-	int i = 28;
+	int i = 20;
 	gotoXY(x, i++);
 	TextColor(12);
 	cout << "     ______                                         |oo|                            ______     /  |                                     /  |    ";
