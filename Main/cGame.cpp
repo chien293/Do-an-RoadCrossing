@@ -4,7 +4,7 @@ void cGame::gameSettings()
 {
 	system("cls");
 	const char *setting[3] = { "Mode", "Sound", "Menu" };
-	char * currentSettting[3] = { "HARD", "ON", "" };
+	const char * currentSettting[3] = { "HARD", "ON", "" };
 	if (constantVar::isHard) {
 		currentSettting[0] = "HARD";
 	}
@@ -43,11 +43,11 @@ void cGame::gameSettings()
 			currentKey = false;
 		}
 		while (1) {
-			if (kbhit()) {
+			if (_kbhit()) {
 				currentKey = true;
 				//system("cls");
 				
-				char key = getch();
+				char key = _getch();
 				if (key == 'W' || key == 'w') {
 					pos1--;
 					pos1 = (pos1 + 3) % 3;
@@ -108,16 +108,7 @@ void cGame::gameSettings()
 		}
 		
 	}
-	//if (flag == 1) { //???
-	//	//system("cls");
-	//	bool isFinish = false;
-	//	menu();
-	//	//  cGame::drawGame();
-	//}
 	return;
-}
-
-void cGame::menu(bool &isFinish) {
 }
 
 void cGame::menu() {
@@ -342,9 +333,9 @@ bool cGame::newGame() { // start a new game, initialize cMap map
 			}
 		}
 			
-		if (kbhit())
+		if (_kbhit())
 		{
-			key = getch();
+			key = _getch();
 			if (key == 'l')
 			{
 				//Save
@@ -418,7 +409,7 @@ bool cGame::newGame() { // start a new game, initialize cMap map
 			}
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 			map.drawPlayer();
-			map.drawMap();
+			map.hitMap();
 		}
 		if (map.isWin()) {
 			if (!constantVar::isMute)PlaySound(TEXT("CompleteStage.wav"), NULL, SND_ASYNC);
@@ -465,9 +456,9 @@ bool cGame::continueGame()
 			cout << choice[i] << endl;
 		}
 
-		if (kbhit())
+		if (_kbhit())
 		{
-			key = getch();
+			key = _getch();
 			if (key == 'l')
 			{
 				//Save
@@ -527,7 +518,7 @@ bool cGame::continueGame()
 			}
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 			map.drawPlayer();
-			map.drawMap();
+			map.hitMap();
 		}
 		if (map.isWin()) {
 			if (map.printLevelUp()) {
@@ -627,9 +618,9 @@ bool cGame::loadGameMenu() { // get file of cMap map
 		cout << files[i] << endl;
 	}
 	while (true) {
-		if (kbhit())
+		if (_kbhit())
 		{
-			char key=getch();
+			char key=_getch();
 			if (key == 'w')
 			{
 				gotoXY(26, 16 + curPos);
@@ -687,7 +678,7 @@ void cGame::saveGameMenu() { // get file of cMap ma
 	//getline(cin, filename);
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 	char key;
-	while ((key = getch()) != 27 ) {
+	while ((key = _getch()) != 27 ) {
 		switch (key) {
 		case '\b':
 			if (filename.size() != 0) {
@@ -717,11 +708,6 @@ void cGame::saveGameMenu() { // get file of cMap ma
 
 void cGame::togglePauseGame() { // toggle status of isPausing
 	isPausing = !isPausing;
-};
-
-void cGame::gameOver() 
-{
-	cout << "Game over" << endl;
 };
 
 void cGame::toggleMute()

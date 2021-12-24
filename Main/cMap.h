@@ -26,7 +26,7 @@ public:
 	~cMap() = default;
 	void resetMap(); // reset the map to default with no enemy and no player
 	void printMap(); // print map to screen
-	void drawMap(); // draw all enemies and player
+	void hitMap(); // draw all enemies and player
 	void redrawMap();
 	int draw(cPosition pos, char ** shape, int w, int h); // draw from position pos(x, y) shape(w, h) | 1: ok, 0: go out of map, -1: crash
 	void deleteOldPlayer();

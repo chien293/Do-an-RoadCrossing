@@ -122,7 +122,7 @@ void cMap::printMap()
 	drawPlayer();
 }
 
-void cMap::drawMap() {
+void cMap::hitMap() {
 	//resetMap();
 	vector <animal_vehical*> enemyList = rowsData.listEnemy(); //enemyList = 0 
 	for (int i = 0; i < (int)enemyList.size(); ++i) {
@@ -230,14 +230,14 @@ void cMap::randomNextState() {
 	++t;
 	int tmp = rowsData.moveToNextState(t);
 	level.decNEnemy(tmp);
-	drawMap();
+	hitMap();
 }
 
 void cMap::redrawMap() {
 	printMap();
 	int tmp = rowsData.moveToNextState(t);
 	level.decNEnemy(tmp);
-	drawMap();
+	hitMap();
 }
 
 void cMap::updatePosPlayer(char moving) {

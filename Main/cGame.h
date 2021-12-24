@@ -24,7 +24,6 @@ public:
 	cGame() = default;
 	~cGame() = default;
 	void gameSettings();
-	void menu(bool &isFinish);
 	bool newGame(); // start a new game, initialize cMap map
 	bool continueGame();  //continue our game
 	bool loadGameMenu(); // get file of cMap map
@@ -32,9 +31,8 @@ public:
 	void togglePauseGame(); // toggle status of isPausing
 	void toggleMute();
 	void toggleHard();
-	void gameOver();
 	void loading();
-	vector<string> getAllFilename(const std::string& name);
+	vector<string> getAllFilename(const string& name);
 	void menu();
 	bool continueMenu();
 };
