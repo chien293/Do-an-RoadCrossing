@@ -313,7 +313,7 @@ void cMap::saveGame(string file)
 	printInt(people.getY(), outfile);
 
 	vector <cOneRow*> rows(rowsData.listRow());
-	for (int i = 0; i < 5; ++i) {
+	for (int i = 0; i < 4; ++i) {
 		printInt(rows[i]->getCurrentRow(), outfile);
 		printInt((int)rows[i]->getDirection(), outfile);
 		printInt(rows[i]->getSpeed(), outfile);
@@ -350,7 +350,7 @@ bool cMap::loadGame(string file) {
 	rowsData.~cRows();
 	new(&rowsData) cRows();
 
-	for (int i = 0; i < 5; ++i) {
+	for (int i = 0; i < 4; ++i) {
 		int currentRow, direction, speed, redLight;
 		currentRow = readInt(infile);
 		direction = readInt(infile);

@@ -243,7 +243,7 @@ bool cGame::continueMenu() {
 	clrscr();
 	map.printMap();
 	map.deleteOldPlayer();
-	//map.bombEffect();
+	map.bombEffect();
 	gotoXY(125, 1); cout << "                                             " << endl;
 	gotoXY(125, 2); cout << "                                             " << endl;
 	gotoXY(100, 3); cout << "*******     *     * *       *******  ******  " << endl;
